@@ -5,9 +5,9 @@ class FavoriteFragmentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     List<String> imagePaths = [
       'images/sale_banner.jpg',
-      'images/register.jpeg',
       'images/sale_banner.jpg',
-      'images/register.jpeg',
+      'images/sale_banner.jpg',
+      'images/sale_banner.jpg',
       // Add more image paths here
     ];
 

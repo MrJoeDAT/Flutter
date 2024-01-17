@@ -9,7 +9,7 @@ class HomeFragmentScreen extends StatelessWidget {
       children: [
         // Background image
         Image.asset(
-          'images/Joeofis.jpg', // Replace with the path to your background image
+          'images/Joe.jpg', // Replace with the path to your background image
           fit: BoxFit.cover,
           width: double.infinity,
           height: double.infinity,
@@ -21,7 +21,7 @@ class HomeFragmentScreen extends StatelessWidget {
             children: [
               // Banner image
               Image.asset(
-                'images/sale_banner.jpg',
+                'images/joe.png',
                 fit: BoxFit.cover,
               ),
 
@@ -50,6 +50,8 @@ class HomeFragmentScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(
+                            255, 2, 255, 179), // Change the text color to white
                       ),
                     ),
                     const SizedBox(height: 16.0),
@@ -75,6 +77,8 @@ class HomeFragmentScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(
+                            255, 0, 255, 191), // Change the text color to white
                       ),
                     ),
                     const SizedBox(height: 16.0),
@@ -100,12 +104,17 @@ class HomeFragmentScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(
+                            255, 255, 0, 179), // Change the text color to white
                       ),
                     ),
                     const SizedBox(height: 16.0),
                     TextField(
                       decoration: InputDecoration(
                         hintText: 'Enter your email address',
+                        hintStyle: const TextStyle(
+                            color: Color.fromARGB(255, 116, 171,
+                                223)), // Change the color of the hint text to white
                         border: OutlineInputBorder(),
                       ),
                     ),
@@ -152,15 +161,17 @@ class HomeFragmentScreen extends StatelessWidget {
       children: [
         Image.asset(
           imageUrl,
-          width: 100.0,
-          height: 100.0,
+          width: 150.0, // Increase the width
+          height: 150.0, // Increase the height
         ),
         const SizedBox(height: 8.0),
         Text(
           title,
           style: const TextStyle(
-            fontSize: 16.0,
+            fontSize: 18.0, // Increase the font size
             fontWeight: FontWeight.bold,
+            color: Color.fromARGB(
+                255, 238, 134, 224), // Change the text color to white
           ),
         ),
       ],
@@ -174,8 +185,8 @@ class HomeFragmentScreen extends StatelessWidget {
         children: [
           Image.asset(
             imageUrl,
-            width: 100.0,
-            height: 100.0,
+            width: 150.0, // Increase the width
+            height: 150.0, // Increase the height
           ),
           const SizedBox(width: 16.0),
           Expanded(
@@ -185,16 +196,19 @@ class HomeFragmentScreen extends StatelessWidget {
                 Text(
                   title,
                   style: const TextStyle(
-                    fontSize: 16.0,
+                    fontSize: 18.0, // Increase the font size
                     fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(
+                        255, 4, 255, 255), // Change the text color to white
                   ),
                 ),
                 const SizedBox(height: 8.0),
                 Text(
                   price,
                   style: const TextStyle(
-                    fontSize: 14.0,
+                    fontSize: 16.0, // Increase the font size
                     fontWeight: FontWeight.bold,
+                    color: Colors.white, // Change the text color to white
                   ),
                 ),
               ],
@@ -213,8 +227,8 @@ class HomeFragmentScreen extends StatelessWidget {
         children: [
           Image.asset(
             imageUrl,
-            width: 100.0,
-            height: 100.0,
+            width: 150.0, // Increase the width
+            height: 150.0, // Increase the height
           ),
           const SizedBox(width: 16.0),
           Expanded(
@@ -224,8 +238,10 @@ class HomeFragmentScreen extends StatelessWidget {
                 Text(
                   title,
                   style: const TextStyle(
-                    fontSize: 16.0,
+                    fontSize: 18.0, // Increase the font size
                     fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(
+                        255, 0, 255, 221), // Change the text color to white
                   ),
                 ),
                 const SizedBox(height: 8.0),
@@ -234,17 +250,19 @@ class HomeFragmentScreen extends StatelessWidget {
                     Text(
                       originalPrice,
                       style: const TextStyle(
-                        fontSize: 14.0,
+                        fontSize: 16.0, // Increase the font size
                         fontWeight: FontWeight.bold,
                         decoration: TextDecoration.lineThrough,
+                        color: Colors.white, // Change the text color to white
                       ),
                     ),
                     const SizedBox(width: 8.0),
                     Text(
                       salePrice,
                       style: const TextStyle(
-                        fontSize: 16.0,
+                        fontSize: 18.0, // Increase the font size
                         fontWeight: FontWeight.bold,
+                        color: Colors.white, // Change the text color to white
                       ),
                     ),
                   ],
