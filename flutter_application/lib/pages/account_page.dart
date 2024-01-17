@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/components/avatar.dart';
 import 'package:flutter_application/main.dart';
 
 class AccountPage extends StatefulWidget {
@@ -11,12 +12,24 @@ class AccountPage extends StatefulWidget {
 class _AccountPageState extends State<AccountPage> {
   final _usernameController = TextEditingController();
   final _websiteController = TextEditingController();
+  String? _imageUrl;
 
   @override
   void dispose() {
     _usernameController.dispose();
     _websiteController.dispose();
     super.dispose();
+  }
+
+  Future<void> _getInitialProfile() async {
+    final userId = supabase.auth.currentUser!.id;
+    final data =
+        await supabase.from('profiles').select().eq('id', userId).single();
+    setState(() {
+      _usernameController.text = data['username'];
+      _websiteController.text = data['website'];
+      _imageUrl = data['avatar_url'];
+    });
   }
 
   @override
@@ -26,6 +39,18 @@ class _AccountPageState extends State<AccountPage> {
       body: ListView(
         padding: const EdgeInsets.all(12),
         children: [
+          Avatar(
+              imageUrl: _imageUrl,
+              onUpload: (imageUrl) async {
+                setState(() {
+                  _imageUrl = imageUrl;
+                });
+                final userId = supabase.auth.currentUser!.id;
+                await supabase
+                    .from('profiles')
+                    .update({'avatar_url': imageUrl}).eq('id', userId);
+              }),
+          const SizedBox(height: 12),
           TextFormField(
             controller: _usernameController,
             decoration: const InputDecoration(
@@ -44,12 +69,16 @@ class _AccountPageState extends State<AccountPage> {
             onPressed: () async {
               final username = _usernameController.text.trim();
               final website = _websiteController.text.trim();
+              final userId = supabase.auth.currentUser!.id;
+
               await supabase.from('profiles').update({
                 'username': username,
                 'website': website,
-              }).eq(
-                'id',
-              );
+              }).eq('id', userId);
+              if (mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Your data has been saved')));
+              }
             },
             child: const Text('Save'),
           ),
